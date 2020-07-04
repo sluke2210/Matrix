@@ -1,15 +1,16 @@
 package com.company;
 import java.util.Arrays;
+import java.util.regex.MatchResult;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Matrix m1 = new Matrix(new double[][] {{1,2,3},{4,5,6},{7,8,9}});
-        Matrix m2 = new Matrix(new double[][] {{9,8,7},{4,3,2},{4,5,6}});
+        Matrix m1 = new Matrix(new double[][] {{0,0,0},{0,5,0},{7,8,9}});
+        Matrix m2 = new Matrix(new double[][] {{0,0,0},{4,3,0},{4,5,0}});
 
-        Matrix m3 = new Matrix(new double[][] {{1,2,3},{4,5,6}});
-        Matrix m4 = new Matrix(new double[][] {{1,2,3},{4,5,6}});
+//        Matrix m3 = new Matrix(new double[][] {{1,2},{4,5}});
+//        Matrix m4 = new Matrix(new double[][] {{1,2},{4,5}});
 ////addttion
 //        Matrix m5 = m1.add(m2);
 //        Matrix m6 = m3.add(m4);
@@ -71,7 +72,17 @@ public class Main {
 //
 //
 //        m1.compareMatrix(m3);
-        Matrix m11 = m1.transpose();
-        m11.compareMatrix(m1);
+//        Matrix m11 = m1.transpose();
+//        m11.compareMatrix(m1);
+
+Matrix mo = new Matrix(new double[][] {{1,2},{3,4}});
+Matrix mp = new Matrix(new double[][] {{3},{3}});
+Matrix res = mo.matrixMul(mp);
+
+res.printMatrix();
+
+
+
+
     }
 }
