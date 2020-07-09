@@ -1,87 +1,55 @@
 package com.company;
-import java.util.Arrays;
-import java.util.regex.MatchResult;
 
 public class Main {
 
     public static void main(String[] args) {
+	Matrix m1 = new Matrix(new double[][] {{1,2,3},{4,5,6},{7,8,9}});
+	Matrix m2 = new Matrix(new double[][] {{1,2,2},{2,1,5},{6,7,4}});
+    m1.matrixMul(m2).printMatrix();
+    System.out.println();
+    m2.matrixMul(m1).printMatrix();
+    Matrix m3 = new Matrix(new double[][] {{1,2,3,4},{5,6,7,8},{9,10,11,12}});
+    System.out.println();
+    m2.matrixMul(m3).printMatrix();
 
-        Matrix m1 = new Matrix(new double[][] {{0,0,0},{0,5,0},{7,8,9}});
-        Matrix m2 = new Matrix(new double[][] {{0,0,0},{4,3,0},{4,5,0}});
+    Complex c1 = new Complex( 2,3);
 
-//        Matrix m3 = new Matrix(new double[][] {{1,2},{4,5}});
-//        Matrix m4 = new Matrix(new double[][] {{1,2},{4,5}});
-////addttion
-//        Matrix m5 = m1.add(m2);
-//        Matrix m6 = m3.add(m4);
-////scalar multiplication
-//        Matrix m7 = m2.scalarMul(2.0);
-//        Matrix m8 = m4.scalarMul(2.0);
-////subtract
-//        Matrix m9 = m3.sub(m4);
-//        Matrix m10 = m1.sub(m2);
-//
-//        m1.printMatrix();
-//        System.out.println("plus");
-//        m2.printMatrix();
-//        System.out.println("is");
-//        m5.printMatrix();
-//
-//        System.out.println();
-//
-//        m3.printMatrix();
-//        System.out.println("plus");
-//        m4.printMatrix();
-//        System.out.println("is");
-//        m6.printMatrix();
-//
-//        System.out.println();
-//
-//        m3.printMatrix();
-//        System.out.println("subtract");
-//        m4.printMatrix();
-//        System.out.println("is");
-//        m9.printMatrix();
-//
-//        System.out.println();
-//
-//        m1.printMatrix();
-//        System.out.println("subtract");
-//        m2.printMatrix();
-//        System.out.println("is");
-//        m10.printMatrix();
-//
-//        System.out.println();
-//
-//        m2.printMatrix();
-//        System.out.println("x2 is");
-//        m7.printMatrix();
-//
-//        System.out.println();
-//
-//        m4.printMatrix();
-//        System.out.println("x2 is");
-//        m8.printMatrix();
-//
-//        System.out.println();
-//        System.out.println(m1.trace());
-//        m3.trace();
-//        m1.compareMatrix(m2);
-//        System.out.println();
-//        m3.compareMatrix(m4);
-//
-//
-//        m1.compareMatrix(m3);
-//        Matrix m11 = m1.transpose();
-//        m11.compareMatrix(m1);
+    System.out.println(c1.conjugate());
+    Complex  c2 = new Complex(2,5);
+    Complex c3 = c1.complexMul(c2);
+    System.out.println(c3);
+    Fraction f1 = new Fraction(10,3);
+    Fraction f2 = new Fraction(12,30);
+    Fraction f3 = f1.addFraction(f2);
+    Complex c5 = new Complex(2,3);
+    Complex c6 = new Complex(5,-2);
+    Complex c7 = new Complex(9,0);
+    Complex c8 = new Complex(2,3);
+    Complex c4 = new Complex(23,3);
+    System.out.println(f3.toString());
 
-Matrix mo = new Matrix(new double[][] {{1,2},{3,4}});
-Matrix mp = new Matrix(new double[][] {{3},{3}});
-Matrix res = mo.matrixMul(mp);
+    Matrix m8 = new Matrix(new Complex[][] {{c1,c2},{c3,c4}});
+    Matrix m9 = new Matrix(new Fraction[][] {{f1,f2}});
+m3.printMatrix();
+System.out.println();
+m8.printComplexMatrix();
+System.out.println();
+m9.printFractionMatrix();
+System.out.println();
+m3.scalarMul(2).printMatrix();
+System.out.println();
+m8.scalarMul(2).printComplexMatrix();
+System.out.println();
+m9.scalarMul(2).printFractionMatrix();
 
-res.printMatrix();
+Matrix m10 = new Matrix(new Complex[][] {{c1,c2},{c3,c4}});
+Matrix m11 = new Matrix(new Complex[][] {{c8,c5},{c6,c7}});
+Matrix m12 = m10.add(m11);
+m12.printComplexMatrix();
+m10.compareMatrix(m11);
 
-
+m9.matrixMul(m9).printFractionMatrix();
+//m10.matrixMul(m11).printComplexMatrix();
 
 
     }
