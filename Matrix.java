@@ -317,95 +317,102 @@ public  class Matrix {
 
 
     public double trace() {
-
-        int height = this.matrix.length;
-        int width = this.matrix[0].length;
-
-
         double trace = 0.0;
 
+    int height = this.matrix.length;
+    int width = this.matrix[0].length;
 
-        if (width != height) {
-            System.out.println("dims wrong");
-        } else {
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    if (i == j) {
-                        trace += (this.matrix[i][j]);
-                    }
+    if (width != height) {
+        System.out.println("dims wrong");
+    } else {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (i == j) {
+                    trace += (this.matrix[i][j]);
                 }
             }
-
         }
+    }
+
+
         return trace;
     }
 
 
     public Matrix transpose() {
+
         Matrix result = null;
 
-        if(this.matrix != null) {
+        if (this.matrix != null) {
 
-            int height = this.matrix.length;
-            int width = this.matrix[0].length;
-            double[][] res = new double[this.matrix.length][this.matrix[0].length];
+            int height = this.matrix.length; //rows
+            int width = this.matrix[0].length; //cols
 
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    res[j][i] = this.matrix[i][j];
+                double[][] res = new double[width][height];
+
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        res[j][i] = this.matrix[i][j];
+                    }
                 }
-            }
-            result = new Matrix(res);
+                result = new Matrix(res);
+
         }
 
-        if(this.complexMatrix != null) {
+        if (this.complexMatrix != null) {
 
             int height = this.complexMatrix.length;
             int width = this.complexMatrix[0].length;
-            Complex[][] res = new Complex[this.complexMatrix.length][this.complexMatrix[0].length];
+                Complex[][] res = new Complex[width][height];
 
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    res[j][i] = this.complexMatrix[i][j];
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        res[j][i] = this.complexMatrix[i][j];
+                    }
                 }
+                result = new Matrix(res);
             }
-            result = new Matrix(res);
+
+            if (this.fractionalMatrix != null) {
+
+                int height = this.fractionalMatrix.length;
+                int width = this.fractionalMatrix[0].length;
+                Fraction[][] res = new Fraction[width][height];
+
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        res[j][i] = this.fractionalMatrix[i][j];
+                    }
+                }
+                result = new Matrix(res);
+            }
+            return result;
         }
 
-        if(this.fractionalMatrix != null) {
 
-            int height = this.fractionalMatrix.length;
-            int width = this.fractionalMatrix[0].length;
-            Fraction[][] res = new Fraction[this.fractionalMatrix.length][this.fractionalMatrix[0].length];
-
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    res[j][i] = this.fractionalMatrix[i][j];
-                }
-            }
-            result = new Matrix(res);
-        }
-
-
-        return result;
-    }
-
-    public void swapRow(int row1, int row2) {
+    public Matrix swapRow(int row1, int row2) {
+        Matrix res = null;
         if(this.matrix != null) {
             double[] temp = this.matrix[row1];
             this.matrix[row1] = this.matrix[row2];
             this.matrix[row2] = temp;
+            res = new Matrix(this.matrix);
         }
         if(this.fractionalMatrix != null) {
             Fraction[] temp = this.fractionalMatrix[row1];
             this.fractionalMatrix[row1] = this.fractionalMatrix[row2];
             this.fractionalMatrix[row2] = temp;
+            res = new Matrix(this.fractionalMatrix);
+
         }
         if(this.complexMatrix != null) {
             Complex[] temp = this.complexMatrix[row1];
             this.complexMatrix[row1] = this.complexMatrix[row2];
             this.complexMatrix[row2] = temp;
+            res = new Matrix(this.complexMatrix);
+
         }
+        return res;
     }
 
     public Boolean isRowZeros(int row) {
@@ -472,11 +479,14 @@ if(this.matrix != null){
 
             if (width != height2) {
                 System.out.println("matrix dims wrong for multiplication");
+                System.out.println("hmm" );
+                System.out.println(width + " " + height2);
             } else {
                 for (int i = 0; i < height; i++) {
                     for (int j = 0; j < width2; j++) {
                         for (int k = 0; k < width; k++) {
-                            res[i][j] =res[i][j].addFraction(this.fractionalMatrix[i][k].multiplyFraction(m.fractionalMatrix[k][j]).simplfyFraction());
+                            //System.out.println((this.fractionalMatrix[i][k].multiplyFraction(m.fractionalMatrix[k][j])).simplfyFraction());
+                            res[i][j] = res[i][j].addFraction( ((this.fractionalMatrix[i][k].multiplyFraction(m.fractionalMatrix[k][j])).simplfyFraction()) );
                         }
                     }
                 }
@@ -501,7 +511,7 @@ if(this.matrix != null){
                 for (int i = 0; i < height; i++) {
                     for (int j = 0; j < width2; j++) {
                         for (int k = 0; k < width; k++) {
-                            res[i][j] =res[i][j].complexAdd(this.complexMatrix[i][k].complexMul(m.complexMatrix[k][j]));
+                            res[i][j] =res[i][j].complexAdd( ( this.complexMatrix[i][k].complexMul(m.complexMatrix[k][j]) ) );
                         }
                     }
                 }
@@ -524,6 +534,210 @@ return  result;
             System.out.println("fractional matrix is null");
         }
     }
+    public static void matrixTests(){
+        //2x1 1x2 2x3 3x2 and 3x3 matracies tested as complex, fractional or double
+        Matrix dM2x1 = new Matrix(new double[][] {{2},{3}});
+        Matrix dM1x2 = new Matrix(new double[][] {{2,3}});
+        Matrix dM2x3 = new Matrix(new double[][] {{2,-5,7},{4,9,1}});
+        Matrix dM3x2 = new Matrix(new double[][] {{6,8},{7,17},{-1,5}});
+        Matrix dM3x3 = new Matrix(new double[][] {{8,12,6},{3,7,9},{15,21,13}});
+        Matrix dM3x3col0 = new Matrix(new double[][] {{8,0,6},{3,0,9},{15,0,13}});
+        Matrix dM3x3row0 = new Matrix(new double[][] {{8,12,6},{3,7,9},{0,0,0}});
+
+        System.out.println(" 2 x 1 matrix ");
+        dM2x1.printMatrix();
+        System.out.println();
+        System.out.println();
+        System.out.println(" 1 x 2 matrix ");
+        dM1x2.printMatrix();
+        System.out.println();
+        System.out.println();
+        System.out.println(" 2 x 3 matrix ");
+        dM2x3.printMatrix();
+        System.out.println();
+        System.out.println();
+        System.out.println(" 3 x 2 matrix ");        //2x1 1x2 2x3 3x2 and 3x3 matracies tested as complex, fractional or double
+        dM3x2.printMatrix();
+        System.out.println();
+        System.out.println(" 3 x 3 matrix ");
+        dM3x3.printMatrix();
+        System.out.println();
+        System.out.println();
+
+        System.out.println("tests begin: 1 matrix addition");
+
+        System.out.println();
+        dM2x1.printMatrix();
+        System.out.println(" + ");
+        dM2x1.printMatrix();
+        System.out.println("is");
+        dM2x1.add(dM2x1).printMatrix();
+
+        System.out.println();
+        dM1x2.printMatrix();
+        System.out.println(" + ");
+        dM1x2.printMatrix();
+        System.out.println("is");
+        dM1x2.add(dM1x2).printMatrix();
+
+        System.out.println();
+        dM2x3.printMatrix();
+        System.out.println(" + ");
+        dM2x3.printMatrix();
+        System.out.println("is");
+        dM2x3.add(dM2x3).printMatrix();
+
+        System.out.println();
+        dM3x2.printMatrix();
+        System.out.println(" + ");
+        dM3x2.printMatrix();
+        System.out.println("is");
+        dM3x2.add(dM3x2).printMatrix();
+
+        System.out.println();
+        dM3x3.printMatrix();
+        System.out.println(" + ");
+        dM3x3.printMatrix();
+        System.out.println("is");
+        dM3x3.add(dM3x3).printMatrix();
+        System.out.println();
+
+        System.out.println("tests begin: 2 matrix scalar multiplication");
+
+        System.out.println();
+        dM3x3.printMatrix();
+        System.out.println(" x2 ");
+        System.out.println("is");
+        dM3x3.scalarMul(2).printMatrix();
+
+        System.out.println();
+        System.out.println();
+
+        dM3x3.printMatrix();
+        System.out.println(" x3 ");
+        System.out.println("is");
+        dM3x3.scalarMul(3).printMatrix();
+
+        System.out.println();
+        System.out.println();
+
+        dM3x3.printMatrix();
+        System.out.println(" x4 ");
+        System.out.println("is");
+        dM3x3.scalarMul(4).printMatrix();
+
+        System.out.println();
+
+        dM3x3.printMatrix();
+        System.out.println(" x-5 ");
+        System.out.println("is");
+        dM3x3.scalarMul(-5).printMatrix();
+
+        System.out.println();
+        System.out.println();
+
+        dM3x3.printMatrix();
+        System.out.println(" x6 ");
+        System.out.println("is");
+        dM3x3.scalarMul(6).printMatrix();
+        System.out.println();
+
+        System.out.println("finding the trace of a matrix");
+
+        System.out.println();
+        dM3x3.printMatrix();
+        System.out.println(" trace is: " + dM3x3.trace());
+        System.out.println();
+
+
+        dM3x3col0.printMatrix();
+        System.out.println(" trace is: " + dM3x3col0.trace());
+
+        System.out.println();
+        dM3x3row0.printMatrix();
+        System.out.println(" trace is: " + dM3x3row0.trace());
+
+        System.out.println("begine test 4 ----- matrix multiplication");
+
+        //width need be equal to height 2 e.g 3x2 x 2x3 ; 1x2 x 2x1 ; 2x1 x 1x2 ; 3x3 x 3x3; 2x3 x 3x2
+
+        dM1x2.printMatrix();
+        System.out.println(" x ");
+        dM2x1.printMatrix();
+        System.out.println("is");
+        dM1x2.matrixMul(dM2x1).printMatrix();
+        System.out.println();
+
+        dM2x1.printMatrix();
+        System.out.println(" x ");
+        dM1x2.printMatrix();
+        System.out.println("is");
+        dM2x1.matrixMul(dM1x2).printMatrix();
+        System.out.println();
+
+        dM3x2.printMatrix();
+        System.out.println(" x ");
+        dM2x3.printMatrix();
+        System.out.println("is");
+        dM3x2.matrixMul(dM2x3).printMatrix();
+        System.out.println();
+
+        dM2x3.printMatrix();
+        System.out.println(" x ");
+        dM3x2.printMatrix();
+        System.out.println("is");
+        dM2x3.matrixMul(dM3x2).printMatrix();
+        System.out.println();
+
+        dM3x3.printMatrix();
+        System.out.println(" x ");
+        dM3x3.printMatrix();
+        System.out.println("is");
+        dM3x3.matrixMul(dM3x3).printMatrix();
+        System.out.println();
+
+        System.out.println("transpose a matrix ----");
+
+        dM3x3.printMatrix();
+        System.out.println(" transposed ");
+        System.out.println("is");
+        dM3x3.transpose().printMatrix();
+        System.out.println();
+
+        dM2x3.printMatrix();
+        System.out.println(" transposed ");
+        System.out.println("is");
+        dM2x3.transpose().printMatrix();
+        System.out.println();
+
+        dM3x2.printMatrix();
+        System.out.println(" transposed ");
+        System.out.println("is");
+        dM3x2.transpose().printMatrix();
+        System.out.println();
+
+        dM2x3.printMatrix();
+        System.out.println(" row 0 and 1 swapped is");
+        dM2x3.swapRow(0,1).printMatrix();
+
+        System.out.println();
+
+        dM3x3.printMatrix();
+        System.out.println(" row 0 and 3 swapped");
+        dM3x3.swapRow(0,2).printMatrix();
+
+        System.out.println("boolean is row 0 is col 0");
+        dM3x3col0.printMatrix();
+        System.out.println("col 0 " + dM3x3col0.isColZeros(0));
+        System.out.println("col 1 " + dM3x3col0.isColZeros(1));
+        System.out.println("col 2 " + dM3x3col0.isColZeros(2));
+        dM3x3row0.printMatrix();
+        System.out.println("row 0 " + dM3x3row0.isRowZeros(0));
+        System.out.println("row 1 " + dM3x3row0.isRowZeros(1));
+        System.out.println("row 2 " + dM3x3row0.isRowZeros(2));
+
+
+    }
 
 }
 
@@ -540,7 +754,8 @@ return  result;
 //        }
 //
 //    }
-//
+
+
 //        for (double[] row : this.matrix) {
 //        //System.out.println(Arrays.toString(row));
 //            if(row[0] != 0){

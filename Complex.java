@@ -58,5 +58,47 @@ public class Complex {
         return "(" + this.real + " , " + this.imaginary + "i" + ")";
     }
 
+    public static void complexTest(){
+        Complex c1 = new Complex(2,3);
+        Complex c2 = new Complex(11,2);
+        Complex c3 = new Complex(5,8);
+        Complex c4 = new Complex(-2,3);
+        Complex c5 = new Complex(2,-3);
+        Complex c6 = new Complex(0,3);
+        Complex c7 = new Complex(2,0);
+        Complex c8 = new Complex(-1,-2);
+
+        System.out.println(c1  + " + " + c2  +" = " + c1.complexAdd(c2)); //g
+        System.out.println(c3  + " + " + c4  +" = " + c3.complexAdd(c4)); //g
+        System.out.println();
+        System.out.println(c1 + " magnatude is " + c1.getMagnitude()); //g
+        System.out.println(c4 + " magnatude is " + c4.getMagnitude()); //g
+        System.out.println(c5 + " magnatude is " + c5.getMagnitude()); //g
+        System.out.println(c8 + " magnatude is " + c8.getMagnitude()); //g
+        System.out.println();
+        System.out.println(c1 + " arg z " + c1.argZ()); //g
+        System.out.println(c4 + " arg z " + c4.argZ()); //g
+        System.out.println(c5 + " arg z " + c5.argZ()); //g
+        System.out.println(c8 + " arg z " + c8.argZ()); //g
+        System.out.println();
+        System.out.println(c3  + "  x2 = " + c3.scalarMul(2));  //g
+        System.out.println(c5  + "  x3 = " + c5.scalarMul(3));  //g
+        System.out.println(c8  + "  x -4 = " + c8.scalarMul(-4));  //g
+        System.out.println();
+        System.out.println(c1 + " x " + c2 + " = " + c1.complexMul(c2)); //g
+        System.out.println(c2 + " x " + c3 + " = " + c2.complexMul(c3)); //g
+        System.out.println(c3 + " x " + c4 + " = " + c3.complexMul(c4)); //g
+        System.out.println(c5 + " x " + c6 + " = " + c5.complexMul(c6)); //g
+        System.out.println(c6 + " x " + c7 + " = " + c6.complexMul(c7)); //g
+        System.out.println(c7 + " x " + c8 + " = " + c7.complexMul(c8)); //g
+        System.out.println(c2 + " x " + c5 + " = " + c2.complexMul(c5)); //g
+        System.out.println();
+        System.out.println(c2 + " conjugate is " + c2.conjugate()); //g
+
+
+
+
+
+    }
 
 }
