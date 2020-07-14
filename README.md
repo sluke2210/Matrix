@@ -1,3 +1,3 @@
 # Matrix
 Class's for Matrix, Fraction and Complex number objects
-done to learn java n matrix stuff
+done to learn java n matrix stuff ; not useful in any way
