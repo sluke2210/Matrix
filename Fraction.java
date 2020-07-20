@@ -69,32 +69,15 @@ public class Fraction {
         return new Fraction(num,deno);
 
     }
+    public double getDoubleValue(){
+        double numerator = ((double) this.getNumerator());
+        double denomonator = ((double) this.getDenomonator());
+        return numerator/denomonator;
+     }
 
 public String toString(){
         return this.numerator + " / " + this.denomonator;
 }
 
-    public static void fractionTest(){
-        Fraction f1 = new Fraction(2,3);
-        Fraction f2 = new Fraction(1, 3);
-        Fraction f3 = new Fraction(1, 8);
-        Fraction f4 = new Fraction(256 ,16);
-        System.out.println(f1 + " + " + f2  + " = " + f1.addFraction(f2));
-        System.out.println();
-        System.out.println(f3 + " X8 " + f3.intScalerMul(8));
-        System.out.println();
-        System.out.println(f4 + " simplified is " + f4.simplfyFraction());
 
-        System.out.println();
-
-        Fraction f5 = new Fraction(-2,3);
-        Fraction f6 = new Fraction(1, -3);
-        Fraction f7 = new Fraction(1, -8);
-        Fraction f8 = new Fraction(-256 ,16);
-        System.out.println(f5 + " + " + f6  + " = " + f5.addFraction(f6));
-        System.out.println();
-        System.out.println(f7 + " X8 " + f7.intScalerMul(8));
-        System.out.println();
-        System.out.println(f8 + " simplified is " + f8.simplfyFraction());
-    }
 }
