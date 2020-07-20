@@ -4,15 +4,43 @@ done to learn java n matrix stuff ; not useful in any way</br>
 </br>
 </br>
 Added Fraction and Complex classes to represent complex numbers and fractions.</br>
-Added support for row swapping, transpose,  Matrix multiplication, addition and scalar multiplication and comparison with Matrices of complex numbers , fractions and doubles.</br>
+
+
+
+for Matrix.java overloading to accept Fraction.java and Complex.java
 </br>
-Other matrix methods not yet supported by types other than double, .trace(); isRowZero() isColZero()</br>
-Methods not yet made  Reduced row echelon form ; dot product ; cross product ; getCofactor ; get Matrix of minors / Matrix of cofactors; get determinant.</br>
 </br>
+function    : is Over Loaded/ works?
+</br>
+
+Constructor(double[][] | Fraction[][] | Complex[][]) : yes</br>
+getElement(int row int col) : partially, for fractions & doubles.</br>
+printMatrix : no, three different .print() fucntions</br>
+compareMatrix: yes</br>
+scalarMul : yes</br>
+add (Matrix) : yes</br>
+sub (Matrix) : no</br>
+MatrixMul(Matrix) : yes</br>
+trace(Matrix) : no</br>
+transpose() : yes</br>
+swapRow(int row1, int row1) : yes</br>
+isRowZero(row) : no</br>
+isColZero(col) : no</br>
+getSubMatrix(int row, int col) : no --needs to be done to implment det</br>
+det()    : no only double atm</br>
+dotProduct() : works for doubles but not fractions gives nullPointerException</br>
+complexDotProduct() returned 0 im not sure if it worked</br>
+</br>
+
 </br>
 Other things to do:</br>
 </br>
+
 1.the methods above.</br>
 2.Exception for IllegalMatrixDimensions.</br>
-3.Support for exponential functions.</br>
-4.Goddam comments</br>
+3.cross prod
+4.createRotationMarix() potentially
+5.matric of minors / matrix of cofactors
+6.tests with known correct solutions
+7.exception
+
