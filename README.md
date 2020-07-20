@@ -38,9 +38,9 @@ Other things to do:</br>
 
 1.the methods above.</br>
 2.Exception for IllegalMatrixDimensions.</br>
-3.cross prod
-4.createRotationMarix() potentially
-5.matric of minors / matrix of cofactors
-6.tests with known correct solutions
-7.exception
+3.cross prod</br>
+4.createRotationMarix() potentially</br>
+5.matric of minors / matrix of cofactors</br>
+6.tests with known correct solutions</br>
+7.exception</br>
 
