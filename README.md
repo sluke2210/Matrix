@@ -97,15 +97,24 @@ trace()-> returns the trace of a square matrix : double matracies only</br>
 transpose() -> Swaps rows and cols of a square matrix: Works for all matracies</br>
 
 swapRow() -> swaps row1 with row2 and row2 with row1: Works for all matracies</br>
+
 isRowZeros(int row1, int row2) -> returns true if every elemnt in row, row is zero : double matracies only</br>
+
 isColZeros(int col) -> returns true if every elemnt in collum, col is zero : double matracies only</br>
+
 getSubMatrix(int row, int col) -> returns a Matrix with the row row, and the col col removed : double matracies only</br>
+
 det(Matrix m) -> returns the determinant of a matrix m passed to Matrix.det(); : double matracies only, also takes 2 minets to find the determinant of a 12 x 12 matrix full of random ints</br>
+
 matrixMul(Matrix M): returns a Matrix that is the matrix product of two matracies with the corrct dimensions : works for all matracies</br>
 dotProduct(Matrix m double|fractional): returns the dot product of 2 vectos (a matrix with 1 dimension) : works for doubles, not for fractions NullPointerException</br>
-complexDotProduct(Matrix) : complex dot product of a vector of complex numbers : complex Matracies of 1 dimension only, im not sure if i works
+
+complexDotProduct(Matrix) : complex dot product of a vector of complex numbers : complex Matracies of 1 dimension only, im not sure if i works</br>
+
 checkNull() -> prints wether or not the state of the 2darray instance vars of Matrix (matrix[][], fractionlMatrix[][], complexMatrix[][]) are null. : works for all matracies</br>
+
 genRandomMatrix(int row, int col, min, max) -> returns a new matrix of size rowXcol filled with random ints from min to max : makes double matracies only </br>
+
 getCofactor2x2()-> computes the cofactor for a 2x2 matrix : double maracies only</br>
 
 
