@@ -27,7 +27,7 @@ swapRow(int row1, int row1) : yes</br>
 isRowZero(row) : no</br>
 isColZero(col) : no</br>
 getSubMatrix(int row, int col) : no --needs to be done to implment det</br>
-det()    : no only double atm</br>
+det()    : no only double atm, also takes 2 minets to find the determinant of a 12 x 12 matrix full of random ints</br>
 dotProduct() : works for doubles but not fractions gives nullPointerException</br>
 complexDotProduct() returned 0 im not sure if it worked</br>
 </br>
