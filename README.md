@@ -3,13 +3,6 @@ Class's for Matrix, Fraction and Complex number objects</br>
 done to learn java n matrix stuff ; not useful in any way</br>
 </br>
 </br>
-Added Fraction and Complex classes to represent complex numbers and fractions.</br>
-
-
-
-for Matrix.java overloading to accept Fraction.java and Complex.java
-</br>
-</br>
 List of methods
 </br>
 </br>
