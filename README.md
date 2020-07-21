@@ -42,5 +42,4 @@ Other things to do:</br>
 4.createRotationMarix() potentially</br>
 5.matric of minors / matrix of cofactors</br>
 6.tests with known correct solutions</br>
-7.exception</br>
 
